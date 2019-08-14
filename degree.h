@@ -2,6 +2,10 @@
 #define DEGREE_H
 #pragma once
 
-enum Degree { SECURITY, NETWORKING, SOFTWARE };
+class Degree
+{
+public:
+	enum Degree { SECURITY, NETWORKING, SOFTWARE };
+};
 
 #endif // DEGREE_H

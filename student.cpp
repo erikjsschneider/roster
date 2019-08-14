@@ -4,50 +4,98 @@
 
 using namespace std;
 
-Student::Student(int studentId, string firstName, string lastName, string emailAddress, int age, int daysInCourse, Degree degree)
-{
+//Student::Student(int studentId, string firstName, string lastName, string emailAddress, int age, int daysInCourse, Degree degree)
+//{
+//}
 
+Student::Student()
+{
+	studentId = 0;
+	firstName = "First";
+	lastName = "Last";
+	emailAddress = "abc123@aol.com";
+	age = 0;
+	daysInCourse[3] = 0;
+	degree = SOFTWARE;
+
+	return;
 }
 
 Student::~Student() {}
 
-void Student::set_studentId(int id)
+void Student::setStudentId(int id)
 {
 	studentId = id;
-	return studentId;
+	return;
 }
 
-int Student::get_studentId()
+int Student::getStudentId() const
 {
 	return studentId;
 }
 
-string Student::get_firstName()
+void Student::setFirstName(string fName)
+{
+	firstName = fName;
+	return;
+}
+
+string Student::getFirstName() const
 {
 	return firstName;
 }
 
-string Student::get_lastName()
+void Student::setLastName(string lName)
+{
+	lastName = lName;
+	return;
+}
+
+string Student::getLastName() const
 {
 	return lastName;
 }
 
-string Student::get_emailAddress()
+void Student::setEmailAddress(string email)
+{
+	emailAddress = email;
+	return;
+}
+
+string Student::getEmailAddress() const
 {
 	return emailAddress;
 }
 
-int Student::get_age()
+void Student::setAge(int ageNum)
+{
+	age = ageNum;
+	return;
+}
+
+int Student::getAge() const
 {
 	return age;
 }
 
-int Student::get_daysInCourse()
+void Student::setDaysInCourse(int* days)
+{
+	daysInCourse[3] = days[3];
+	return;
+}
+
+int Student::getDaysInCourse() const
 {
 	return daysInCourse[3];
 }
 
-Degree Student::get_degree()
+void Student::setDegree(Degree deg)
+{
+	degree = deg;
+	return;
+}
+
+Degree Student::getDegree() const
 {
 	return degree;
 }

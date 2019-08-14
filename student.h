@@ -6,7 +6,8 @@
 
 using namespace std;
 
-class Student {
+class Student
+{
 private:
 	int studentId;
 	string firstName;
@@ -18,18 +19,29 @@ private:
 
 public:
 	Student();
+
+	void setStudentId(int id);
+	int getStudentId() const;
+	void setFirstName(string fName);
+	string getFirstName() const;
+	void setLastName(string lName);
+	string getLastName() const;
+	void setEmailAddress(string email);
+	string getEmailAddress() const;
+	void setAge(int ageNum);
+	int getAge() const;
+	void setDaysInCourse(int* days);
+	int getDaysInCourse() const;
+	void setDegree(Degree deg);
+	Degree getDegree() const;
+
+	virtual void print() const;
+
 	~Student();
-	int get_studentId();
-	string get_firstName();
-	string get_lastName();
-	string get_emailAddress();
-	int get_age();
-	int get_daysInCourse();
-	Degree get_degree();
 
-	Student(int studentId, string firstName, string lastName, string emailAddress, int age, int daysInCourse, Degree degree)
+	virtual Degree getDegreeProgram() const
 	{
-
+		return degree;
 	}
 };
 
