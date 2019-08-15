@@ -5,6 +5,7 @@
 #include <string>
 #include "degree.h"
 #include "student.h"
+#include "roster.h"
 
 using namespace std;
 
@@ -13,9 +14,25 @@ Student NetworkStudent;
 Student SecurityStudent;
 Student SoftwareStudent;
 
-int main()
+void main()
 {
-    std::cout << "Hello World!\n";
+    cout << "This course is C867.\n";
+	cout << "C++ was the language assigned for this project.\n";
+	cout << "My student ID is 000669769\n";
+	cout << "My name is Erik Schneider.\n";
+
+	Roster classRoster();
+
+	//add each student to classRoster
+
+	classRoster.printAll();
+	classRoster.printInvalidEmails();
+	//loop through classRosterArray and for each element:
+	classRoster.printAverageDaysInCourse(/*current_object's student id*/);
+	classRoster.printByDegreeProgram(SOFTWARE);
+	classRoster.remove("A3");
+	classRoster.remove("A3");
+	//expected: the above line should print a message saying such a student with this ID was not found.
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
