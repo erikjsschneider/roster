@@ -2,6 +2,10 @@
 #define ROSTER_H
 #pragma once
 
+#include <string>
+
+using namespace std;
+
 class Roster
 {
 public:

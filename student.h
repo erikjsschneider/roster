@@ -39,10 +39,7 @@ public:
 
 	~Student();
 
-	virtual Degree getDegreeProgram() const
-	{
-		return degree;
-	}
+	virtual Degree getDegreeProgram() const {}
 };
 
 #endif // STUDENT_H

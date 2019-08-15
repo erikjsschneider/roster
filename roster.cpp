@@ -2,6 +2,16 @@
 //
 
 #include <iostream>
+#include <string>
+#include "degree.h"
+#include "student.h"
+
+using namespace std;
+
+Student* classRosterArray[5];
+Student NetworkStudent;
+Student SecurityStudent;
+Student SoftwareStudent;
 
 int main()
 {

@@ -7,6 +7,9 @@
 
 class NetworkStudent
 {
+private:
+	Degree degree = NETWORKING;
+
 public:
 	virtual Degree getDegreeProgram() const
 	{

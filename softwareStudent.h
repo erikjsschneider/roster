@@ -7,6 +7,9 @@
 
 class SoftwareStudent
 {
+private:
+	Degree degree = SOFTWARE;
+
 public:
 	virtual Degree getDegreeProgram() const
 	{
