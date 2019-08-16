@@ -17,5 +17,7 @@ public:
 		"A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
 		"A5,Erik,Schneider,eschne7@wgu.edu,32,16,25,30,SOFTWARE"
 	};
+
+	~Roster();
 };
 #endif // ROSTER_H
