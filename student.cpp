@@ -10,33 +10,33 @@ using namespace std;
 
 Student::Student()
 {
-	studentId = 0;
-	firstName = "First";
-	lastName = "Last";
-	emailAddress = "abc123@aol.com";
+	studentId = "studentId";
+	firstName = "first";
+	lastName = "last";
+	emailAddress = "email";
 	age = 0;
-	daysInCourse[3] = 0;
-	degree = SOFTWARE;
+	daysInCourse[3] = { 0, 0, 0 };
+	degree;
 
 	return;
 }
 
 Student::~Student() {}
 
-void Student::setStudentId(int id)
+void Student::setStudentId(string studentId)
 {
-	studentId = id;
+	this->studentId = studentId;
 	return;
 }
 
-int Student::getStudentId() const
+string Student::getStudentId() const
 {
 	return studentId;
 }
 
 void Student::setFirstName(string fName)
 {
-	firstName = fName;
+	this->firstName = fName;
 	return;
 }
 
@@ -47,7 +47,7 @@ string Student::getFirstName() const
 
 void Student::setLastName(string lName)
 {
-	lastName = lName;
+	this->lastName = lName;
 	return;
 }
 
@@ -58,7 +58,7 @@ string Student::getLastName() const
 
 void Student::setEmailAddress(string email)
 {
-	emailAddress = email;
+	this->emailAddress = email;
 	return;
 }
 
@@ -67,9 +67,9 @@ string Student::getEmailAddress() const
 	return emailAddress;
 }
 
-void Student::setAge(int ageNum)
+void Student::setAge(int age)
 {
-	age = ageNum;
+	this->age = age;
 	return;
 }
 
@@ -80,18 +80,18 @@ int Student::getAge() const
 
 void Student::setDaysInCourse(int* days)
 {
-	daysInCourse[3] = days[3];
+	this->daysInCourse[3] = days[3];
 	return;
 }
 
 int Student::getDaysInCourse() const
 {
-	return daysInCourse[3];
+	return daysInCourse[2];
 }
 
-void Student::setDegree(Degree deg)
+void Student::setDegree(Degree degree)
 {
-	degree = deg;
+	this->degree = degree;
 	return;
 }
 

@@ -9,7 +9,7 @@ using namespace std;
 class Student
 {
 private:
-	int studentId;
+	string studentId;
 	string firstName;
 	string lastName;
 	string emailAddress;
@@ -20,8 +20,8 @@ private:
 public:
 	Student();
 
-	void setStudentId(int id);
-	int getStudentId() const;
+	void setStudentId(string id);
+	string getStudentId() const;
 	void setFirstName(string fName);
 	string getFirstName() const;
 	void setLastName(string lName);

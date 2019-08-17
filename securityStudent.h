@@ -7,13 +7,10 @@
 
 class SecurityStudent
 {
-private:
-	Degree degree = SECURITY;
-
 public:
 	virtual Degree getDegreeProgram() const
 	{
-		return degree;
+		Degree::SECURITY;
 	}
 };
 

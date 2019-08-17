@@ -7,13 +7,10 @@
 
 class SoftwareStudent
 {
-private:
-	Degree degree = SOFTWARE;
-
 public:
 	virtual Degree getDegreeProgram() const
 	{
-		return degree;
+		Degree::SOFTWARE;
 	}
 };
 

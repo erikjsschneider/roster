@@ -14,6 +14,8 @@ Student NetworkStudent;
 Student SecurityStudent;
 Student SoftwareStudent;
 
+Degree degree;
+
 void main()
 {
     cout << "This course is C867.\n";
