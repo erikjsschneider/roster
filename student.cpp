@@ -16,9 +16,20 @@ Student::Student()
 	emailAddress = "email";
 	age = 0;
 	daysInCourse[3] = { 0, 0, 0 };
-	degree;
+	degree = UNDECIDED;
 
 	return;
+}
+
+Student::Student(string studentId, string fName, string lName, string email, int age, int* days, Degree degree)
+{
+	this->studentId = studentId;
+	this->firstName = fName;
+	this->lastName = lName;
+	this->emailAddress = email;
+	this->age = age;
+	this->daysInCourse = days;
+	this->degree = degree;
 }
 
 Student::~Student() {}
