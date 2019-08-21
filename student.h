@@ -21,25 +21,25 @@ public:
 	Student();
 
 	void setStudentId(string id);
-	string getStudentId() const;
+	string getStudentId();
 	void setFirstName(string fName);
-	string getFirstName() const;
+	string getFirstName();
 	void setLastName(string lName);
-	string getLastName() const;
+	string getLastName();
 	void setEmailAddress(string email);
-	string getEmailAddress() const;
+	string getEmailAddress();
 	void setAge(int ageNum);
-	int getAge() const;
+	int getAge();
 	void setDaysInCourse(int* days);
-	int getDaysInCourse() const;
+	int getDaysInCourse();
 	void setDegree(Degree deg);
-	Degree getDegree() const;
+	Degree getDegree();
 
-	virtual void print() const;
+	virtual void print();
 
 	~Student();
 
-	virtual Degree getDegreeProgram() const {}
+	virtual Degree getDegreeProgram() {}
 };
 
 #endif // STUDENT_H

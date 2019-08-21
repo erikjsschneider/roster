@@ -5,13 +5,29 @@
 #include "student.h"
 #include "degree.h"
 
-class SecurityStudent
+class SecurityStudent : public Student
 {
 public:
-	virtual Degree getDegreeProgram() const
+	SecurityStudent(
+		string studentId,
+		string firstName,
+		string lastName,
+		string emailAddress,
+		int age,
+		int* days,
+		string degree);
+	~SecurityStudent();
+
+	void getDegreeProgram();
+	void print();
+
+private:
+	string degree;
+
+	/*virtual Degree getDegreeProgram() const
 	{
 		Degree::SECURITY;
-	}
+	}*/
 };
 
 #endif // SECURITYSTUDENT_H

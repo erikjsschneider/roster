@@ -1,12 +1,9 @@
+#include <iostream>
 #include <string>
 #include "degree.h"
 #include "student.h"
 
 using namespace std;
-
-//Student::Student(int studentId, string firstName, string lastName, string emailAddress, int age, int daysInCourse, Degree degree)
-//{
-//}
 
 Student::Student()
 {
@@ -21,7 +18,16 @@ Student::Student()
 	return;
 }
 
-Student::Student(string studentId, string fName, string lName, string email, int age, int* days, Degree degree)
+Student::Student
+(
+	string studentId,
+	string fName,
+	string lName,
+	string email,
+	int age,
+	int* days,
+	Degree degree
+)
 {
 	this->studentId = studentId;
 	this->firstName = fName;
@@ -40,7 +46,7 @@ void Student::setStudentId(string studentId)
 	return;
 }
 
-string Student::getStudentId() const
+string Student::getStudentId()
 {
 	return studentId;
 }
@@ -51,7 +57,7 @@ void Student::setFirstName(string fName)
 	return;
 }
 
-string Student::getFirstName() const
+string Student::getFirstName()
 {
 	return firstName;
 }
@@ -62,7 +68,7 @@ void Student::setLastName(string lName)
 	return;
 }
 
-string Student::getLastName() const
+string Student::getLastName()
 {
 	return lastName;
 }
@@ -73,7 +79,7 @@ void Student::setEmailAddress(string email)
 	return;
 }
 
-string Student::getEmailAddress() const
+string Student::getEmailAddress()
 {
 	return emailAddress;
 }
@@ -84,7 +90,7 @@ void Student::setAge(int age)
 	return;
 }
 
-int Student::getAge() const
+int Student::getAge()
 {
 	return age;
 }
@@ -95,7 +101,7 @@ void Student::setDaysInCourse(int* days)
 	return;
 }
 
-int Student::getDaysInCourse() const
+int Student::getDaysInCourse()
 {
 	return daysInCourse[2];
 }
@@ -106,7 +112,19 @@ void Student::setDegree(Degree degree)
 	return;
 }
 
-Degree Student::getDegree() const
+Degree Student::getDegree()
 {
 	return degree;
+}
+
+void Student::print()
+{
+	cout << "First Name: " << getFirstName();
+	cout << "Last Name: " << getLastName();
+	cout << "Age: " << getAge();
+}
+
+void Student::getDegreeProgram()
+{
+	this->getDegreeProgram();
 }
