@@ -7,6 +7,9 @@
 
 class NetworkStudent : public Student
 {
+private:
+	string degree;
+
 public:
 	NetworkStudent(
 		string studentId,
@@ -20,9 +23,6 @@ public:
 
 	void getDegreeProgram();
 	void print();
-
-private:
-	string degree;
 
 	/*virtual Degree getDegreeProgram() const
 	{

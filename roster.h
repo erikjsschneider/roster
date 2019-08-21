@@ -42,10 +42,10 @@ public:
 		int daysInCourse1,
 		int daysInCourse2,
 		int daysInCourse3,
-		< degree program >
+		string degree
 	);
 
-	int createStudent();
+	int populateStudents();
 	void remove(string studentId);
 	void printAll();
 	void printDaysInCourse(string studentId);

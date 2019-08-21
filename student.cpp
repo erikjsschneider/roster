@@ -13,7 +13,7 @@ Student::Student()
 	emailAddress = "email";
 	age = 0;
 	daysInCourse[3] = { 0, 0, 0 };
-	degree = UNDECIDED;
+	degree = SOFTWARE;
 
 	return;
 }

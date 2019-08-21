@@ -5,7 +5,7 @@
 class Degree
 {
 public:
-	enum DEGREE_TYPE { SECURITY, NETWORKING, SOFTWARE, UNDECIDED };
+	enum class degreeType { SECURITY, NETWORKING, SOFTWARE };
 };
 
 #endif // DEGREE_H

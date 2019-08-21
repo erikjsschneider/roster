@@ -7,6 +7,9 @@
 
 class SecurityStudent : public Student
 {
+private:
+	string degree;
+
 public:
 	SecurityStudent(
 		string studentId,
@@ -20,9 +23,6 @@ public:
 
 	void getDegreeProgram();
 	void print();
-
-private:
-	string degree;
 
 	/*virtual Degree getDegreeProgram() const
 	{
