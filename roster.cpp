@@ -30,8 +30,25 @@ int Roster::populateStudents()
 {
 	for (int i = 0; i < SIZE; i++)
 	{
-		string studentId,
+		string studentId, firstName, lastName, emailAddress, degree, position;
+		int age, day1, day2, day3;
+		char* nextToken;
+
+		position = studentData[i];
+		char comma[] = ",";
+		int value = 0;
+		string person[9];
+
+		token = strtok_s(NULL, comma, &nextToken)
 	}
+
+
+
+
+
+
+
+		--
 }
 
 void Roster::add
@@ -87,8 +104,8 @@ int main(void)
 	classRoster.printAll();
 	classRoster.printInvalidEmails();
 	//loop through classRosterArray and for each element:
-	classRoster.printDaysInCourse(/*current_object's student id*/);
-	classRoster.printByDegreeProgram(SOFTWARE);
+	//classRoster.printDaysInCourse(/*current_object's student id*/);
+	//classRoster.printByDegreeProgram(SOFTWARE);
 	classRoster.remove("A3");
 	classRoster.remove("A3");
 	//expected: the above line should print a message saying such a student with this ID was not found.
