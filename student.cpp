@@ -2,21 +2,21 @@
 #include <string>
 #include "degree.h"
 #include "student.h"
+#include "roster.h"
 
 using namespace std;
 
-Student::Student()
-{
-	studentId = "studentId";
-	firstName = "first";
-	lastName = "last";
-	emailAddress = "email";
-	age = 0;
-	daysInCourse[3] = { 0, 0, 0 };
-	degree = SOFTWARE;
-
-	return;
-}
+//Student::Student()
+//{
+	//studentId = "studentId";
+	//firstName = "first";
+	//lastName = "last";
+	//emailAddress = "email";
+	//age = 0;
+	//daysInCourse[3] = { 0, 0, 0 };
+	//degree = new string();
+	//degreeType = UNDECIDED;
+//}
 
 Student::Student
 (
@@ -34,8 +34,8 @@ Student::Student
 	this->lastName = lName;
 	this->emailAddress = email;
 	this->age = age;
-	this->daysInCourse = days;
-	this->degree = degree;
+	this->setDaysInCourse(days);
+	//this->degree = degree;
 }
 
 Student::~Student() {}

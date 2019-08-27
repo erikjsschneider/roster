@@ -37,18 +37,86 @@ int Roster::populateStudents()
 		position = studentData[i];
 		char comma[] = ",";
 		int value = 0;
-		string person[9];
+		string indexPos[9];
+		nextToken = strtok_s(&position[0], comma, &nextToken);
+		while (nextToken != NULL && value < 9)
+		{
+			indexPos[value] = nextToken;
+			value++;
+			nextToken = strtok_s(NULL, comma, &nextToken);
+		}
 
-		token = strtok_s(NULL, comma, &nextToken)
+		studentId = indexPos[0];
+		firstName = indexPos[1];
+		lastName = indexPos[2];
+		emailAddress = indexPos[3];
+		age = stoi(indexPos[4].~basic_string);
+		day1 = stoi(indexPos[5].~basic_string);
+		day2 = stoi(indexPos[6].~basic_string);
+		day3 = stoi(indexPos[7].~basic_string);
+		degree = indexPos[8];
+
+		int days[3] = { day1, day2, day3 };
+
+		Student* student = new Student(
+			studentId,
+			firstName,
+			lastName,
+			emailAddress,
+			age,
+			daysInCourse,
+			degree
+		);
+
+		if (indexPos[8].~basic_string == "SECURITY")
+		{
+			SecurityStudent securityStudent(
+				studentId,
+				firstName,
+				lastName,
+				emailAddress,
+				age,
+				daysInCourse,
+				degree
+			);
+
+			student = &securityStudent;
+		}
+
+		if (indexPos[8].~basic_string == "NETWORKING")
+		{
+			NetworkStudent networkStudent(
+				studentId,
+				firstName,
+				lastName,
+				emailAddress,
+				age,
+				daysInCourse,
+				degree
+			);
+
+			student = &networkStudent;
+		}
+
+		if (indexPos[8].~basic_string == "SOFTWARE")
+		{
+			SoftwareStudent softwareStudent(
+				studentId,
+				firstName,
+				lastName,
+				emailAddress,
+				age,
+				daysInCourse,
+				degree
+			);
+
+			student = &softwareStudent;
+		}
+
+		classRosterArray[i] = new Student(*student);
 	}
 
-
-
-
-
-
-
-		--
+	return 0;
 }
 
 void Roster::add
