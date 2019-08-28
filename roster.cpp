@@ -17,7 +17,7 @@ Roster::Roster()
 	this->populateStudents();
 }
 
-Roster::~Roster() {}
+//Roster::~Roster() {}
 
 Student* classRosterArray[5];
 //Student NetworkStudent;
@@ -68,7 +68,8 @@ int Roster::populateStudents()
 			degree
 		);
 
-		if (indexPos[8].~basic_string == "SECURITY")
+		//if (indexPos[8].~basic_string == "SECURITY")
+		if (strcmp(indexPos[8].~basic_string, "SECURITY"))
 		{
 			SecurityStudent securityStudent(
 				studentId,
@@ -83,7 +84,7 @@ int Roster::populateStudents()
 			student = &securityStudent;
 		}
 
-		if (indexPos[8].~basic_string == "NETWORKING")
+		if (strcmp(indexPos[8].~basic_string, "NETWORKING"))
 		{
 			NetworkStudent networkStudent(
 				studentId,
@@ -98,7 +99,7 @@ int Roster::populateStudents()
 			student = &networkStudent;
 		}
 
-		if (indexPos[8].~basic_string == "SOFTWARE")
+		if (strcmp(indexPos[8].~basic_string, "SOFTWARE"))
 		{
 			SoftwareStudent softwareStudent(
 				studentId,
@@ -179,7 +180,7 @@ int main(void)
 	//expected: the above line should print a message saying such a student with this ID was not found.
 }
 
-//Roster::~Roster() {}
+Roster::~Roster() {}
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu

@@ -23,11 +23,6 @@ public:
 
 	void getDegreeProgram();
 	void print();
-
-	/*virtual Degree getDegreeProgram() const
-	{
-		Degree::SECURITY;
-	}*/
 };
 
 #endif // SECURITYSTUDENT_H

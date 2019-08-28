@@ -27,7 +27,7 @@ NetworkStudent::NetworkStudent
 		degree
 )
 {
-	this->setDegree(degree);
+	this->setDegreeType(degree);
 }
 
 NetworkStudent::~NetworkStudent() {}
@@ -36,5 +36,5 @@ void NetworkStudent::getDegreeProgram() {}
 
 void NetworkStudent::print()
 {
-	cout << "Enrolled in the " << this->getDegreeProgram() << " degree program.\n";
+	cout << "Enrolled in the " << this->getDegree() << " degree program.\n";
 }

@@ -26,7 +26,7 @@ Student::Student
 	string email,
 	int age,
 	int* days,
-	Degree degree
+	string degree
 )
 {
 	this->studentId = studentId;
@@ -97,34 +97,81 @@ int Student::getAge()
 
 void Student::setDaysInCourse(int* days)
 {
-	this->daysInCourse[3] = days[3];
+	for (int i = 0; i <= 3; i++)
+	{
+		this->daysInCourse[i] = days[i];
+	}
 	return;
 }
 
-int Student::getDaysInCourse()
+int* Student::getDaysInCourse()
 {
-	return daysInCourse[2];
+	return this->daysInCourse;
 }
 
-void Student::setDegree(Degree degree)
+void Student::setDegreeType(string degree)
 {
-	this->degree = degree;
+	this->degree = &degree;
+
+	if (degree == "SECURITY")
+	{
+		this->degreeType = SECURITY;
+	}
+
+	if (degree == "NETWORKING")
+	{
+		this->degreeType = NETWORKING;
+	}
+
+	if (degree == "SOFTWARE")
+	{
+		this->degreeType = SOFTWARE;
+	}
 	return;
 }
 
-Degree Student::getDegree()
+void Student::setDegreeStr()
 {
-	return degree;
+	switch (this->degreeType)
+	{
+	case SECURITY: 
+		*(this->degree) = "SECURITY";
+		break;
+	case NETWORKING: 
+		*(this->degree) = "NETWORKING";
+		break;
+	case SOFTWARE: 
+		*(this->degree) = "SOFTWARE";
+		break;
+	default:
+		*(this->degree) = "Undecided";
+		break;
+	}
 }
 
-void Student::print()
+string Student::getDegree()
 {
-	cout << "First Name: " << getFirstName();
-	cout << "Last Name: " << getLastName();
-	cout << "Age: " << getAge();
+	return *(this->degree);
 }
 
 void Student::getDegreeProgram()
 {
-	this->getDegreeProgram();
+	this->getDegree();
+}
+
+void Student::print()
+{
+	cout << "First Name: \n" << getFirstName();
+	cout << "Last Name: \n" << getLastName();
+	cout << "Age: \n" << getAge();
+	cout << "Days In Course: ";
+
+	for (int i = 0; i < 3; i++)
+	{
+		cout << this->getDaysInCourse()[i];
+		if (i < 2)
+		{
+			cout << ", ";
+		}
+	}
 }

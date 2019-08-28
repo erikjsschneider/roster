@@ -23,11 +23,6 @@ public:
 
 	void getDegreeProgram();
 	void print();
-
-	/*virtual Degree getDegreeProgram() const
-	{
-		Degree::SOFTWARE;
-	}*/
 };
 
 #endif // SOFTWARESTUDENT_H

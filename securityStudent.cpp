@@ -27,7 +27,7 @@ SecurityStudent::SecurityStudent
 		degree
 )
 {
-	this->setDegree(degree);
+	this->setDegreeType(degree);
 }
 
 SecurityStudent::~SecurityStudent() {}
@@ -36,5 +36,5 @@ void SecurityStudent::getDegreeProgram() {}
 
 void SecurityStudent::print()
 {
-	cout << "Enrolled in the " << this->getDegreeProgram() << " degree program.\n";
+	cout << "Enrolled in the " << this->getDegree() << " degree program.\n";
 }
