@@ -45,9 +45,7 @@ int Roster::populateStudents()
 
 		token = strtok_s(&position[0], comma, &nextToken);
 		while (token != NULL && value < 9)
-		//while (token != NULL)
 		{
-			//cout << "\nID: " << indexPos[0] << "\n\n";
 			indexPos[value] = token;
 			token = strtok_s(NULL, comma, &nextToken);
 			value++;
@@ -144,8 +142,6 @@ void Roster::add
 
 void Roster::printInvalidEmails()
 {
-	//use regex to check for invalid emails, perhaps
-
 	list<string> emailAddresses;
 
 	for (int i = 0; i < SIZE; i++)
@@ -174,7 +170,6 @@ void Roster::printInvalidEmails()
 			if (!regex_search(indexPos[3], match, r))
 			{
 				emailAddresses.push_back(indexPos[3].c_str());
-				emailAddresses.push_back(", ");
 			}
 		}
 		catch (regex_error& e) {
@@ -186,15 +181,47 @@ void Roster::printInvalidEmails()
 
 	for (auto invalidEmails : emailAddresses)
 	{
-		cout << invalidEmails;
+		cout << invalidEmails << ", ";
 	}
 
-	cout << "\n";
+	cout << "\b\b \n";
 }
 
 void Roster::printDaysInCourse(string studentId)
 {
+	list<int> averageDays;
+
+	for (int i = 0; i < SIZE; i++)
+	{
+		int day1, day2, day3, total;
+		string position = studentData[i];
+		char* token = NULL;
+		char* nextToken = NULL;
+
+		position = studentData[i];
+		char comma[] = ",";
+		int value = 0;
+		string indexPos[9];
+
+		token = strtok_s(&position[0], comma, &nextToken);
+		while (token != NULL && value < 9)
+		{
+			indexPos[value] = token;
+			token = strtok_s(NULL, comma, &nextToken);
+			value++;
+		}
+
+		day1 = atoi(indexPos[5].c_str());
+		day2 = atoi(indexPos[6].c_str());
+		day3 = atoi(indexPos[7].c_str());
+
+		total = (day1 + day2 + day3)/3;
+
+		cout << "Student Id " << studentId << " Average Days In Course: " << total << ".\n";
+	}
+
 	//take the 3 day values and average them, then return them
+	//cout << "Student Id " << studentId << " Average Days In Course: " << total << ".\n";
 }
 
 void Roster::printAll()
