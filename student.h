@@ -49,7 +49,7 @@ public:
 
 	~Student();
 
-	virtual void getDegreeProgram() {}
+	virtual void getDegreeProgram();
 };
 
 #endif // STUDENT_H

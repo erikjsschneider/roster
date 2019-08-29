@@ -18,24 +18,26 @@ using namespace std;
 	//degreeType = UNDECIDED;
 //}
 
+Student::Student() {}
+
 Student::Student
 (
 	string studentId,
-	string fName,
-	string lName,
-	string email,
+	string firstName,
+	string lastName,
+	string emailAddress,
 	int age,
 	int* days,
 	string degree
 )
 {
 	this->studentId = studentId;
-	this->firstName = fName;
-	this->lastName = lName;
-	this->emailAddress = email;
+	this->firstName = firstName;
+	this->lastName = lastName;
+	this->emailAddress = emailAddress;
 	this->age = age;
 	this->setDaysInCourse(days);
-	//this->degree = degree;
+	this->degree = &degree;
 }
 
 Student::~Student() {}
@@ -97,7 +99,7 @@ int Student::getAge()
 
 void Student::setDaysInCourse(int* days)
 {
-	for (int i = 0; i <= 3; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		this->daysInCourse[i] = days[i];
 	}
@@ -161,10 +163,12 @@ void Student::getDegreeProgram()
 
 void Student::print()
 {
-	cout << "First Name: \n" << getFirstName();
-	cout << "Last Name: \n" << getLastName();
-	cout << "Age: \n" << getAge();
-	cout << "Days In Course: ";
+	cout << "\nStudent Id: " << getStudentId();
+	cout << "\nFirst Name: " << getFirstName();
+	cout << "\nLast Name: " << getLastName();
+	cout << "\nEmail Address: " << getEmailAddress();
+	cout << "\nAge: " << getAge();
+	cout << "\nDays In Course: ";
 
 	for (int i = 0; i < 3; i++)
 	{
@@ -173,5 +177,11 @@ void Student::print()
 		{
 			cout << ", ";
 		}
+		else
+		{
+			cout << "\n";
+		}
 	}
+
+	//cout << "\nDegree: " << getDegree();
 }

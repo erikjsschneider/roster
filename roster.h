@@ -46,11 +46,11 @@ public:
 	);
 
 	int populateStudents();
-	void remove(string studentId);
+	void remove(string);
 	void printAll();
-	void printDaysInCourse(string studentId);
+	void printDaysInCourse(string);
 	void printInvalidEmails();
-	void printByDegreeProgram(int degreeProgram);
+	void printByDegreeProgram(Degree);
 
 
 };

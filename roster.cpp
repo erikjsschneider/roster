@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <string>
+#include <list>
+#include <regex>
+
 #include "degree.h"
 #include "student.h"
 #include "networkStudent.h"
@@ -32,31 +35,35 @@ int Roster::populateStudents()
 	{
 		string studentId, firstName, lastName, emailAddress, degree, position;
 		int age, day1, day2, day3;
-		char* nextToken;
 
 		position = studentData[i];
 		char comma[] = ",";
+		char* token = NULL;
+		char* nextToken = NULL;
 		int value = 0;
 		string indexPos[9];
-		nextToken = strtok_s(&position[0], comma, &nextToken);
-		while (nextToken != NULL && value < 9)
+
+		token = strtok_s(&position[0], comma, &nextToken);
+		while (token != NULL && value < 9)
+		//while (token != NULL)
 		{
-			indexPos[value] = nextToken;
+			//cout << "\nID: " << indexPos[0] << "\n\n";
+			indexPos[value] = token;
+			token = strtok_s(NULL, comma, &nextToken);
 			value++;
-			nextToken = strtok_s(NULL, comma, &nextToken);
 		}
 
-		studentId = indexPos[0];
-		firstName = indexPos[1];
-		lastName = indexPos[2];
-		emailAddress = indexPos[3];
-		age = stoi(indexPos[4].~basic_string);
-		day1 = stoi(indexPos[5].~basic_string);
-		day2 = stoi(indexPos[6].~basic_string);
-		day3 = stoi(indexPos[7].~basic_string);
-		degree = indexPos[8];
+		studentId = atoi(indexPos[0].c_str());
+		firstName = atoi(indexPos[1].c_str());
+		lastName = atoi(indexPos[2].c_str());
+		emailAddress = indexPos[3].c_str();
+		age = atoi(indexPos[4].c_str());
+		day1 = atoi(indexPos[5].c_str());
+		day2 = atoi(indexPos[6].c_str());
+		day3 = atoi(indexPos[7].c_str());
+		degree = atoi(indexPos[8].c_str());
 
-		int days[3] = { day1, day2, day3 };
+		int daysInCourse[3] = { day1, day2, day3 };
 
 		Student* student = new Student(
 			studentId,
@@ -68,8 +75,7 @@ int Roster::populateStudents()
 			degree
 		);
 
-		//if (indexPos[8].~basic_string == "SECURITY")
-		if (strcmp(indexPos[8].~basic_string, "SECURITY"))
+		if (strcmp(indexPos[8].c_str(), "SECURITY"))
 		{
 			SecurityStudent securityStudent(
 				studentId,
@@ -84,7 +90,7 @@ int Roster::populateStudents()
 			student = &securityStudent;
 		}
 
-		if (strcmp(indexPos[8].~basic_string, "NETWORKING"))
+		if (strcmp(indexPos[8].c_str(), "NETWORKING"))
 		{
 			NetworkStudent networkStudent(
 				studentId,
@@ -99,7 +105,7 @@ int Roster::populateStudents()
 			student = &networkStudent;
 		}
 
-		if (strcmp(indexPos[8].~basic_string, "SOFTWARE"))
+		if (strcmp(indexPos[8].c_str(), "SOFTWARE"))
 		{
 			SoftwareStudent softwareStudent(
 				studentId,
@@ -139,6 +145,51 @@ void Roster::add
 void Roster::printInvalidEmails()
 {
 	//use regex to check for invalid emails, perhaps
+
+	list<string> emailAddresses;
+
+	for (int i = 0; i < SIZE; i++)
+	{
+		string position = studentData[i];
+		char* token = NULL;
+		char* nextToken = NULL;
+
+		position = studentData[i];
+		char comma[] = ",";
+		int value = 0;
+		string indexPos[9];
+
+		token = strtok_s(&position[0], comma, &nextToken);
+		while (token != NULL && value < 9)
+		{
+			indexPos[value] = token;
+			token = strtok_s(NULL, comma, &nextToken);
+			value++;
+		}
+
+		try
+		{
+			regex r("^(([A-Za-z0-9._])+\\@([A-Za-z])+\\.([A-Za-z]+))$");
+			smatch match;
+			if (!regex_search(indexPos[3], match, r))
+			{
+				emailAddresses.push_back(indexPos[3].c_str());
+				emailAddresses.push_back(", ");
+			}
+		}
+		catch (regex_error& e) {
+			cout << "";
+		}
+	}
+
+	cout << "\nInvalid Email Addresses: ";
+
+	for (auto invalidEmails : emailAddresses)
+	{
+		cout << invalidEmails;
+	}
+
+	cout << "\n";
 }
 
 void Roster::printDaysInCourse(string studentId)
@@ -154,7 +205,7 @@ void Roster::printAll()
 	}
 }
 
-void Roster::printByDegreeProgram(int degreeProgram)
+void Roster::printByDegreeProgram(Degree degreeProgram)
 {
 	//use regex to filter out degreeType that matches with the input degreeProgram
 }
@@ -169,14 +220,15 @@ int main(void)
 	Roster classRoster;
 
 	//add each student to classRoster
+	classRoster.populateStudents();
 
 	classRoster.printAll();
 	classRoster.printInvalidEmails();
 	//loop through classRosterArray and for each element:
 	//classRoster.printDaysInCourse(/*current_object's student id*/);
 	//classRoster.printByDegreeProgram(SOFTWARE);
-	classRoster.remove("A3");
-	classRoster.remove("A3");
+	//classRoster.remove("A3");
+	//classRoster.remove("A3");
 	//expected: the above line should print a message saying such a student with this ID was not found.
 }
 
