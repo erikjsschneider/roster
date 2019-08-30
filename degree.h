@@ -2,7 +2,7 @@
 #define DEGREE_H
 #pragma once
 
-enum Degree { SECURITY, NETWORKING, SOFTWARE };
+enum Degree { SECURITY, NETWORK, SOFTWARE };
 
 
 #endif // DEGREE_H
