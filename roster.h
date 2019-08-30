@@ -42,7 +42,7 @@ public:
 		int daysInCourse1,
 		int daysInCourse2,
 		int daysInCourse3,
-		string degree
+		Degree degree
 	);
 
 	int populateStudents();
