@@ -15,8 +15,6 @@ private:
 	string emailAddress;
 	int age;
 	int daysInCourse[3];
-	string* degree;
-	Degree degreeType;
 
 public:
 	Student();
@@ -26,30 +24,26 @@ public:
 		string lastName,
 		string emailAddress,
 		int age,
-		int* daysInCourse,
-		string degree);
+		int* daysInCourse);
 
 	void setStudentId(string id);
 	string getStudentId();
-	void setFirstName(string fName);
+	void setFirstName(string firstName);
 	string getFirstName();
-	void setLastName(string lName);
+	void setLastName(string lastName);
 	string getLastName();
-	void setEmailAddress(string email);
+	void setEmailAddress(string emailAddress);
 	string getEmailAddress();
-	void setAge(int ageNum);
+	void setAge(int age);
 	int getAge();
 	void setDaysInCourse(int* days);
 	int* getDaysInCourse();
-	void setDegreeType(string deg);
-	void setDegreeStr();
-	string getDegree();
 
 	virtual void print();
 
 	~Student();
 
-	virtual void getDegreeProgram();
+	virtual Degree getDegreeProgram();
 };
 
 #endif // STUDENT_H

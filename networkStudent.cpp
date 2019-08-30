@@ -15,26 +15,47 @@ NetworkStudent::NetworkStudent
 	string emailAddress,
 	int age,
 	int* days,
-	string degree
+	Degree deg
 ) : Student
 (
-		studentId,
-		firstName,
-		lastName,
-		emailAddress,
-		age,
-		days,
-		degree
+	studentId,
+	firstName,
+	lastName,
+	emailAddress,
+	age,
+	days
 )
 {
-	this->setDegreeType(degree);
+	degree = deg;
 }
 
 NetworkStudent::~NetworkStudent() {}
 
-void NetworkStudent::getDegreeProgram() {}
+Degree NetworkStudent::getDegreeProgram()
+{
+	return degree;
+}
 
 void NetworkStudent::print()
 {
-	cout << "Enrolled in the " << this->getDegree() << " degree program.\n";
+	cout << getStudentId();
+	cout << "\tFirst Name: " << getFirstName();
+	cout << "\tLast Name: " << getLastName();
+	cout << "\tEmail Address: " << getEmailAddress();
+	cout << "\tAge: " << getAge();
+	cout << "\tDays In Course: ";
+
+	for (int i = 0; i < 3; i++)
+	{
+		cout << this->getDaysInCourse()[i];
+		if (i < 2)
+		{
+			cout << ", ";
+		}
+		else
+		{
+			cout << "\t";
+		}
+	}
+	cout << "Degree Program: Network";
 }

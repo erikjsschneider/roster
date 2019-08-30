@@ -48,7 +48,7 @@ public:
 	int populateStudents();
 	void remove(string);
 	void printAll();
-	void printDaysInCourse(string);
+	void printAverageDaysInCourse(string);
 	void printInvalidEmails();
 	void printByDegreeProgram(Degree);
 

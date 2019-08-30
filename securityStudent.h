@@ -8,7 +8,7 @@
 class SecurityStudent : public Student
 {
 private:
-	string degree;
+	Degree degree;
 
 public:
 	SecurityStudent(
@@ -18,10 +18,11 @@ public:
 		string emailAddress,
 		int age,
 		int* days,
-		string degree);
+		Degree degree
+	);
 	~SecurityStudent();
 
-	void getDegreeProgram();
+	Degree getDegreeProgram();
 	void print();
 };
 

@@ -8,7 +8,7 @@
 class SoftwareStudent : public Student
 {
 private:
-	string degree;
+	Degree degree;
 
 public:
 	SoftwareStudent(
@@ -18,10 +18,11 @@ public:
 		string emailAddress,
 		int age,
 		int* days,
-		string degree);
+		Degree degree
+	);
 	~SoftwareStudent();
 
-	void getDegreeProgram();
+	Degree getDegreeProgram();
 	void print();
 };
 

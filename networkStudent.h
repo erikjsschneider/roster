@@ -8,7 +8,7 @@
 class NetworkStudent : public Student
 {
 private:
-	string degree;
+	Degree degree;
 
 public:
 	NetworkStudent(
@@ -18,10 +18,11 @@ public:
 		string emailAddress,
 		int age,
 		int* days,
-		string degree);
+		Degree degree
+	);
 	~NetworkStudent();
 
-	void getDegreeProgram();
+	Degree getDegreeProgram();
 	void print();
 };
 

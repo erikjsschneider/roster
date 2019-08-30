@@ -6,18 +6,6 @@
 
 using namespace std;
 
-//Student::Student()
-//{
-	//studentId = "studentId";
-	//firstName = "first";
-	//lastName = "last";
-	//emailAddress = "email";
-	//age = 0;
-	//daysInCourse[3] = { 0, 0, 0 };
-	//degree = new string();
-	//degreeType = UNDECIDED;
-//}
-
 Student::Student() {}
 
 Student::Student
@@ -27,8 +15,7 @@ Student::Student
 	string lastName,
 	string emailAddress,
 	int age,
-	int* days,
-	string degree
+	int* days
 )
 {
 	this->studentId = studentId;
@@ -37,7 +24,6 @@ Student::Student
 	this->emailAddress = emailAddress;
 	this->age = age;
 	this->setDaysInCourse(days);
-	this->degree = &degree;
 }
 
 Student::~Student() {}
@@ -111,59 +97,14 @@ int* Student::getDaysInCourse()
 	return this->daysInCourse;
 }
 
-void Student::setDegreeType(string degree)
+Degree Student::getDegreeProgram()
 {
-	this->degree = &degree;
-
-	if (degree == "SECURITY")
-	{
-		this->degreeType = SECURITY;
-	}
-
-	if (degree == "NETWORKING")
-	{
-		this->degreeType = NETWORKING;
-	}
-
-	if (degree == "SOFTWARE")
-	{
-		this->degreeType = SOFTWARE;
-	}
-	return;
-}
-
-void Student::setDegreeStr()
-{
-	switch (this->degreeType)
-	{
-	case SECURITY: 
-		*(this->degree) = "SECURITY";
-		break;
-	case NETWORKING: 
-		*(this->degree) = "NETWORKING";
-		break;
-	case SOFTWARE: 
-		*(this->degree) = "SOFTWARE";
-		break;
-	default:
-		*(this->degree) = "Undecided";
-		break;
-	}
-}
-
-string Student::getDegree()
-{
-	return *(this->degree);
-}
-
-void Student::getDegreeProgram()
-{
-	this->getDegree();
+	return SOFTWARE;
 }
 
 void Student::print()
 {
-	cout << "\nStudent Id: " << getStudentId();
+	/*cout << "\nStudent Id: " << getStudentId();
 	cout << "\nFirst Name: " << getFirstName();
 	cout << "\nLast Name: " << getLastName();
 	cout << "\nEmail Address: " << getEmailAddress();
@@ -181,7 +122,7 @@ void Student::print()
 		{
 			cout << "\n";
 		}
-	}
+	}*/
 
 	//cout << "\nDegree: " << getDegree();
 }

@@ -15,7 +15,7 @@ SecurityStudent::SecurityStudent
 	string emailAddress,
 	int age,
 	int* days,
-	string degree
+	Degree deg
 ) : Student
 (
 		studentId,
@@ -23,18 +23,39 @@ SecurityStudent::SecurityStudent
 		lastName,
 		emailAddress,
 		age,
-		days,
-		degree
+		days
 )
 {
-	this->setDegreeType(degree);
+	degree = deg;
 }
 
 SecurityStudent::~SecurityStudent() {}
 
-void SecurityStudent::getDegreeProgram() {}
+Degree SecurityStudent::getDegreeProgram() 
+{
+	return degree;
+}
 
 void SecurityStudent::print()
 {
-	cout << "Enrolled in the " << this->getDegree() << " degree program.\n";
+	cout << getStudentId();
+	cout << "\tFirst Name: " << getFirstName();
+	cout << "\tLast Name: " << getLastName();
+	cout << "\tEmail Address: " << getEmailAddress();
+	cout << "\tAge: " << getAge();
+	cout << "\tDays In Course: ";
+
+	for (int i = 0; i < 3; i++)
+	{
+		cout << this->getDaysInCourse()[i];
+		if (i < 2)
+		{
+			cout << ", ";
+		}
+		else
+		{
+			cout << "\t";
+		}
+	}
+	cout << "Degree Program: Security";
 }
