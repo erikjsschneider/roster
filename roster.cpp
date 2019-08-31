@@ -15,10 +15,7 @@
 
 using namespace std;
 
-Roster::Roster()
-{
-	this->populateStudents();
-}
+Roster::Roster() {}
 
 void Roster::populateStudents()
 {
@@ -26,7 +23,7 @@ void Roster::populateStudents()
 	{
 		string studentId, firstName, lastName, emailAddress, position;
 		int age, day1, day2, day3;
-		Degree degree;
+		Degree degree{};
 
 		position = studentData[i];
 		char comma[] = ",";
@@ -68,6 +65,7 @@ void Roster::populateStudents()
 		}
 
 		add(studentId, firstName, lastName, emailAddress, age, day1, day2, day3, degree);
+		cout << "\n";
 	}
 
 }
@@ -106,8 +104,6 @@ void Roster::add
 	}
 
 	pos++;
-	
-	return;
 }
 
 void Roster::printInvalidEmails()
@@ -347,14 +343,13 @@ int main()
 
 	//add each student to classRoster
 	classRoster.populateStudents();
-
 	classRoster.printAll();
 	classRoster.printInvalidEmails();
 	//loop through classRosterArray and for each element:
 	//classRoster.printAverageDaysInCourse(/*current_object's student id*/);
-	classRoster.printByDegreeProgram(SOFTWARE);
-	classRoster.remove("A3");
-	classRoster.remove("A3");
+	//classRoster.printByDegreeProgram(SOFTWARE);
+	//classRoster.remove("A3");
+	//classRoster.remove("A3");
 	//expected: the above line should print a message saying such a student with this ID was not found.
 }
 
