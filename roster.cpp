@@ -20,7 +20,7 @@ Roster::Roster()
 	this->populateStudents();
 }
 
-int Roster::populateStudents()
+void Roster::populateStudents()
 {
 	for (int i = 0; i < SIZE; i++)
 	{
@@ -52,17 +52,17 @@ int Roster::populateStudents()
 		day2 = stoi(indexPos[6].c_str());
 		day3 = stoi(indexPos[7].c_str());
 
-		if (strcmp(indexPos[8].c_str(), "SECURITY"))
+		if (indexPos[8] == "SECURITY")
 		{
 			degree = SECURITY;
 		}
 
-		if (strcmp(indexPos[8].c_str(), "NETWORK"))
+		if (indexPos[8] == "NETWORK")
 		{
 			degree = NETWORK;
 		}
 
-		if (strcmp(indexPos[8].c_str(), "SOFTWARE"))
+		if (indexPos[8] == "SOFTWARE")
 		{
 			degree = SOFTWARE;
 		}
@@ -70,7 +70,6 @@ int Roster::populateStudents()
 		add(studentId, firstName, lastName, emailAddress, age, day1, day2, day3, degree);
 	}
 
-	return 0;
 }
 
 void Roster::add
@@ -94,8 +93,23 @@ void Roster::add
 	if (degree == SECURITY)
 	{
 		//needs an index, also do this for the other two degree types as well
-		classRosterArray = new SecurityStudent(studentId, firstName, lastName, emailAddress, age, daysInCourse, degree);
+		classRosterArray[pos] = new SecurityStudent(studentId, firstName, lastName, emailAddress, age, daysInCourse, degree);
 	}
+	
+	if (degree == NETWORK)
+	{
+		//needs an index, also do this for the other two degree types as well
+		classRosterArray[pos] = new NetworkStudent(studentId, firstName, lastName, emailAddress, age, daysInCourse, degree);
+	}
+	
+	if (degree == SOFTWARE)
+	{
+		//needs an index, also do this for the other two degree types as well
+		classRosterArray[pos] = new SoftwareStudent(studentId, firstName, lastName, emailAddress, age, daysInCourse, degree);
+	}
+
+	pos++;
+	
 	return;
 }
 

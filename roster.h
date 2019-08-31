@@ -21,6 +21,7 @@ class Roster
 {
 private:
 	Student* classRosterArray[SIZE];
+	int pos = 0;
 
 public:
 	Roster();
@@ -39,7 +40,7 @@ public:
 		Degree degree
 	);
 
-	int populateStudents();
+	void populateStudents();
 	void remove(string);
 	void printAll();
 	void printAverageDaysInCourse(string);
