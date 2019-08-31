@@ -92,19 +92,16 @@ void Roster::add
 
 	if (degree == SECURITY)
 	{
-		//needs an index, also do this for the other two degree types as well
 		classRosterArray[pos] = new SecurityStudent(studentId, firstName, lastName, emailAddress, age, daysInCourse, degree);
 	}
 	
 	if (degree == NETWORK)
 	{
-		//needs an index, also do this for the other two degree types as well
 		classRosterArray[pos] = new NetworkStudent(studentId, firstName, lastName, emailAddress, age, daysInCourse, degree);
 	}
 	
 	if (degree == SOFTWARE)
 	{
-		//needs an index, also do this for the other two degree types as well
 		classRosterArray[pos] = new SoftwareStudent(studentId, firstName, lastName, emailAddress, age, daysInCourse, degree);
 	}
 

@@ -17,7 +17,6 @@ private:
 	int daysInCourse[3];
 
 public:
-	Student();
 	Student(
 		string studentId,
 		string firstName,

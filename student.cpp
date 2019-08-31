@@ -6,8 +6,6 @@
 
 using namespace std;
 
-Student::Student() {}
-
 Student::Student
 (
 	string studentId,
