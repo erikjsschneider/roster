@@ -102,27 +102,4 @@ Degree Student::getDegreeProgram()
 	return SOFTWARE;
 }
 
-void Student::print()
-{
-	/*cout << "\nStudent Id: " << getStudentId();
-	cout << "\nFirst Name: " << getFirstName();
-	cout << "\nLast Name: " << getLastName();
-	cout << "\nEmail Address: " << getEmailAddress();
-	cout << "\nAge: " << getAge();
-	cout << "\nDays In Course: ";
-
-	for (int i = 0; i < 3; i++)
-	{
-		cout << this->getDaysInCourse()[i];
-		if (i < 2)
-		{
-			cout << ", ";
-		}
-		else
-		{
-			cout << "\n";
-		}
-	}*/
-
-	//cout << "\nDegree: " << getDegree();
-}
+void Student::print() {}

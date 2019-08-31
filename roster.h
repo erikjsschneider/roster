@@ -20,12 +20,6 @@ const int SIZE = 5;
 class Roster
 {
 private:
-	string studentId;
-	string firstName;
-	string lastName;
-	string emailAddress;
-	int age;
-	int daysInCourse[3];
 	Student* classRosterArray[SIZE];
 
 public:

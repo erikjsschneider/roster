@@ -20,21 +20,13 @@ Roster::Roster()
 	this->populateStudents();
 }
 
-//Roster::~Roster() {}
-
-Student* classRosterArray[5];
-//Student NetworkStudent;
-//Student SecurityStudent;
-//Student SoftwareStudent;
-
-//Degree degree;
-
 int Roster::populateStudents()
 {
 	for (int i = 0; i < SIZE; i++)
 	{
-		string studentId, firstName, lastName, emailAddress, degree, position;
+		string studentId, firstName, lastName, emailAddress, position;
 		int age, day1, day2, day3;
+		Degree degree;
 
 		position = studentData[i];
 		char comma[] = ",";
@@ -51,74 +43,31 @@ int Roster::populateStudents()
 			value++;
 		}
 
-		studentId = atoi(indexPos[0].c_str());
-		firstName = atoi(indexPos[1].c_str());
-		lastName = atoi(indexPos[2].c_str());
+		studentId = indexPos[0].c_str();
+		firstName = indexPos[1].c_str();
+		lastName = indexPos[2].c_str();
 		emailAddress = indexPos[3].c_str();
-		age = atoi(indexPos[4].c_str());
-		day1 = atoi(indexPos[5].c_str());
-		day2 = atoi(indexPos[6].c_str());
-		day3 = atoi(indexPos[7].c_str());
-		degree = atoi(indexPos[8].c_str());
+		age = stoi(indexPos[4].c_str());
+		day1 = stoi(indexPos[5].c_str());
+		day2 = stoi(indexPos[6].c_str());
+		day3 = stoi(indexPos[7].c_str());
 
-		int daysInCourse[3] = { day1, day2, day3 };
-
-		/*Student* student = new Student(
-			studentId,
-			firstName,
-			lastName,
-			emailAddress,
-			age,
-			daysInCourse,
-			degree
-		);*/
-
-		/*if (strcmp(indexPos[8].c_str(), "SECURITY"))
+		if (strcmp(indexPos[8].c_str(), "SECURITY"))
 		{
-			SecurityStudent securityStudent(
-				studentId,
-				firstName,
-				lastName,
-				emailAddress,
-				age,
-				daysInCourse,
-				degree
-			);
-
-			student = &securityStudent;
+			degree = SECURITY;
 		}
 
 		if (strcmp(indexPos[8].c_str(), "NETWORK"))
 		{
-			NetworkStudent networkStudent(
-				studentId,
-				firstName,
-				lastName,
-				emailAddress,
-				age,
-				daysInCourse,
-				degree
-			);
-
-			student = &networkStudent;
+			degree = NETWORK;
 		}
 
 		if (strcmp(indexPos[8].c_str(), "SOFTWARE"))
 		{
-			SoftwareStudent softwareStudent(
-				studentId,
-				firstName,
-				lastName,
-				emailAddress,
-				age,
-				daysInCourse,
-				degree
-			);
+			degree = SOFTWARE;
+		}
 
-			student = &softwareStudent;
-		}*/
-
-		classRosterArray[i] = new Student(*student);
+		add(studentId, firstName, lastName, emailAddress, age, day1, day2, day3, degree);
 	}
 
 	return 0;
@@ -126,17 +75,27 @@ int Roster::populateStudents()
 
 void Roster::add
 (
-	string studentID,
+	string studentId,
 	string firstName,
 	string lastName,
 	string emailAddress,
 	int age,
-	int daysInCourse1,
-	int daysInCourse2,
-	int daysInCourse3,
+	int day1,
+	int day2,
+	int day3,
 	Degree degree
 )
 {
+	int daysInCourse[3];
+	daysInCourse[0] = day1;
+	daysInCourse[1] = day2;
+	daysInCourse[2] = day3;
+
+	if (degree == SECURITY)
+	{
+		//needs an index, also do this for the other two degree types as well
+		classRosterArray = new SecurityStudent(studentId, firstName, lastName, emailAddress, age, daysInCourse, degree);
+	}
 	return;
 }
 
