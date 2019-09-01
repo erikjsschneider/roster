@@ -65,7 +65,6 @@ void Roster::populateStudents()
 		}
 
 		add(studentId, firstName, lastName, emailAddress, age, day1, day2, day3, degree);
-		cout << "\n";
 	}
 
 }
@@ -156,6 +155,9 @@ void Roster::printInvalidEmails()
 void Roster::printAverageDaysInCourse(string studentId)
 {
 	list<int> averageDays;
+	/*int rosterSize = &classRosterArray[].size();
+
+	for (int i = 0; i < classRosterArray);*/
 
 	for (int i = 0; i < SIZE; i++)
 	{
@@ -176,9 +178,9 @@ void Roster::printAverageDaysInCourse(string studentId)
 			value++;
 		}
 
-		day1 = atoi(indexPos[5].c_str());
-		day2 = atoi(indexPos[6].c_str());
-		day3 = atoi(indexPos[7].c_str());
+		day1 = stoi(indexPos[5].c_str());
+		day2 = stoi(indexPos[6].c_str());
+		day3 = stoi(indexPos[7].c_str());
 
 		total = (day1 + day2 + day3)/3;
 
@@ -194,12 +196,43 @@ void Roster::printAll()
 	for (int j = 0; j < SIZE; j++)
 	{
 		this->classRosterArray[j]->print();
+		cout << "\n";
 	}
 }
 
 void Roster::printByDegreeProgram(Degree degreeProgram)
 {
-	//use regex to filter out degreeType that matches with the input degreeProgram
+	/*for (auto& classRosterArray : classRosterArray)
+	{
+		string position = studentData[i];
+		char* token = NULL;
+		char* nextToken = NULL;
+
+		char comma[] = ",";
+		int value = 0;
+		string indexPos[9];
+
+		token = strtok_s(&position[0], comma, &nextToken);
+		while (token != NULL && value < 9)
+		{
+			indexPos[value] = token;
+			token = strtok_s(NULL, comma, &nextToken);
+			value++;
+		}
+		if (indexPos[8] == "SECURITY" && degreeProgram == SECURITY)
+		{
+			cout << "Enrolled in the Security Degree Program: " << studentData[i] << "\n";
+		}
+		else if (indexPos[8] == "NETWORK" && degreeProgram == NETWORK)
+		{
+			cout << "Enrolled in the Network Degree Program: " << studentData[i] << "\n";
+		}
+		else if (indexPos[8] == "SOFTWARE" && degreeProgram == SOFTWARE)
+		{
+			cout << "Enrolled in the Software Degree Program: " << studentData[i] << "\n";
+		}
+	}*/
+
 	for (int i = 0; i < SIZE; i++)
 	{
 		string position = studentData[i];
@@ -218,118 +251,102 @@ void Roster::printByDegreeProgram(Degree degreeProgram)
 			value++;
 		}
 
-		//switch (atoi(indexPos[8].c_str()))
-		//{
-		//case SECURITY:
-			//cout << "Enrolled in the Security Degree Program: \n" << studentData[i] << "\n";
-			//break;
-		//case NETWORKING:
-			//cout << "Enrolled in the Networking Degree Program: \n" << studentData[i] << "\n";
-			//break;
-		//case SOFTWARE:
-			//cout << "Enrolled in the Software Degree Program: \n" << studentData[i] << "\n";
-			//break;
-		//default:
-			//break;
-		//}
-
-		//if (strcmp(indexPos[8].c_str(), "SECURITY"))
-		//{
-			//cout << "Enrolled in the Security Degree Program: \n" << studentData[i] << "\n";
-		//}
-		//else if (strcmp(indexPos[8].c_str(), "NETWORKING"))
-		//{
-			//cout << "Enrolled in the Networking Degree Program: \n" << studentData[i] << "\n";
-		//} 
-		//else if (strcmp(indexPos[8].c_str(), "SOFTWARE"))
-		//{
-			//cout << "Enrolled in the Software Degree Program: \n" << studentData[i] << "\n";
-		//}
-
-		try
+		if (indexPos[8] == "SECURITY" && degreeProgram == SECURITY)
 		{
-			regex r("^(SECURITY)+$");
-			smatch match;
-			if (regex_search(indexPos[8], match, r))
-			{
-				cout << "Enrolled in the Security Degree Program: \n" << studentData[i] << "\n\n";
-			}
+			cout << "Enrolled in the Security Degree Program: " << studentData[i] << "\n";
 		}
-		catch (regex_error& e)
+		else if (indexPos[8] == "NETWORK" && degreeProgram == NETWORK)
 		{
-			cout << "";
-		}
-		
-		try
+			cout << "Enrolled in the Network Degree Program: " << studentData[i] << "\n";
+		} 
+		else if (indexPos[8] == "SOFTWARE" && degreeProgram == SOFTWARE)
 		{
-			regex r("^(NETWORK)+$");
-			smatch match;
-			if (regex_search(indexPos[8], match, r))
-			{
-				cout << "Enrolled in the Networking Degree Program: \n" << studentData[i] << "\n\n";
-			}
-		}
-		catch (regex_error& e)
-		{
-			cout << "";
-		}
-		
-		try
-		{
-			regex r("^(SOFTWARE)+$");
-			smatch match;
-			if (regex_search(indexPos[8], match, r))
-			{
-				cout << "Enrolled in the Software Degree Program: \n" << studentData[i] << "\n\n";
-			}
-		}
-		catch (regex_error& e)
-		{
-			cout << "";
+			cout << "Enrolled in the Software Degree Program: " << studentData[i] << "\n";
 		}
 	}
 }
 
 void Roster::remove(string studentId)
 {
-	for (int i = 0; i < SIZE; i++)
+	for (auto classRosterArray : classRosterArray)
 	{
-		string position = studentData[i];
-		char* token = NULL;
-		char* nextToken = NULL;
-
-		position = studentData[i];
-		char comma[] = ",";
-		int value = 0;
-		string indexPos[9];
-
-		token = strtok_s(&position[0], comma, &nextToken);
-		while (token != NULL && value < 9)
+		if (classRosterArray->getStudentId == studentId)
 		{
-			indexPos[value] = token;
-			token = strtok_s(NULL, comma, &nextToken);
-			value++;
+			delete classRosterArray;
 		}
-		cout << indexPos[0] << "\n";
-
-		if (indexPos[0] == studentId)
-		{
-			position[i] = NULL;
-			cout << "Matched! " << indexPos[0] << "\n";
-		}
-		//try
-		//{
-		//	if (indexPos[0] == studentId)
-		//	{
-		//		position[i] = NULL;
-		//		//cout << "Matched! " << indexPos[0] << "\n";
-		//	}
-		//}
-		//catch (invalid_argument e)
-		//{
-		//	cout << "Student with this Id was not found.";
-		//}
 	}
+
+	//	classRosterArray[0];
+	//	for (int i = 0; i < SIZE; i++)
+	//	{
+	//		string position = classRosterArray[i];
+	//		char* token = NULL;
+	//		char* nextToken = NULL;
+
+	//		char comma[] = ",";
+	//		int value = 0;
+	//		string indexPos[9];
+
+	//		token = strtok_s(&position[], comma, &nextToken);
+	//		while (token != NULL && value < 9)
+	//		{
+	//			indexPos[value] = token;
+	//			token = strtok_s(NULL, comma, &nextToken);
+	//			value++;
+	//		}
+
+	//		try
+	//		{
+	//			if (indexPos[0] == studentId)
+	//			{
+	//				delete &classRosterArray[i];
+	//				//cout << "Matched! " << indexPos[0] << "\n";
+	//			}
+	//		}
+	//		catch (invalid_argument e)
+	//		{
+	//			cout << "Student with this Id was not found.";
+	//		}
+	//	}
+	//}
+
+	//for (int i = 0; i < SIZE; i++)
+	//{
+	//	string position = studentData[i];
+	//	char* token = NULL;
+	//	char* nextToken = NULL;
+
+	//	char comma[] = ",";
+	//	int value = 0;
+	//	string indexPos[9];
+
+	//	token = strtok_s(&position[0], comma, &nextToken);
+	//	while (token != NULL && value < 9)
+	//	{
+	//		indexPos[value] = token;
+	//		token = strtok_s(NULL, comma, &nextToken);
+	//		value++;
+	//	}
+	//	cout << indexPos[0] << "\n";
+
+	//	if (indexPos[0] == studentId)
+	//	{
+	//		position[i] = NULL;
+	//		cout << "Matched! " << indexPos[0] << "\n";
+	//	}
+	//	try
+	//	{
+	//		if (indexPos[0] == studentId)
+	//		{
+	//			position[i] = NULL;
+	//			//cout << "Matched! " << indexPos[0] << "\n";
+	//		}
+	//	}
+	//	catch (invalid_argument e)
+	//	{
+	//		cout << "Student with this Id was not found.";
+	//	}
+	//}
 }
 
 int main()
@@ -346,10 +363,10 @@ int main()
 	classRoster.printAll();
 	classRoster.printInvalidEmails();
 	//loop through classRosterArray and for each element:
-	//classRoster.printAverageDaysInCourse(/*current_object's student id*/);
-	//classRoster.printByDegreeProgram(SOFTWARE);
-	//classRoster.remove("A3");
-	//classRoster.remove("A3");
+	//classRoster.printAverageDaysInCourse("A3");
+	classRoster.printByDegreeProgram(SOFTWARE);
+	classRoster.remove("A3");
+	classRoster.remove("A3");
 	//expected: the above line should print a message saying such a student with this ID was not found.
 }
 
