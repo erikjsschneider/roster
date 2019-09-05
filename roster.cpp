@@ -107,7 +107,26 @@ void Roster::add
 
 void Roster::printInvalidEmails()
 {
-	list<string> emailAddresses;
+	cout << "\nInvalid Email Addresses: \n";
+
+	for (int j = 0; j < SIZE; j++)
+	{
+		string emails = this->classRosterArray[j]->getEmailAddress();
+		if (emails.find("@") == string::npos)
+		{
+			cout << emails << "\n";
+		}
+		else if (emails.find(".") == string::npos)
+		{
+			cout << emails << "\n";
+		}
+		else if (emails.find(" ") != string::npos)
+		{
+			cout << emails << "\n";
+		}
+	}
+
+	/*list<string> emailAddresses;
 
 	for (int i = 0; i < SIZE; i++)
 	{
@@ -149,17 +168,32 @@ void Roster::printInvalidEmails()
 		cout << invalidEmails << ", ";
 	}
 
-	cout << "\b\b \n\n";
+	cout << "\b\b \n\n";*/
 }
 
 void Roster::printAverageDaysInCourse(string studentId)
 {
-	list<int> averageDays;
+	//cout << "\nAverage Days: ";
+
+	for (int j = 0; j < SIZE; j++)
+	{
+		if (studentId == this->classRosterArray[j]->getStudentId()) {
+			double tempDay1 = this->classRosterArray[j]->getDaysInCourse()[0];
+			double tempDay2 = this->classRosterArray[j]->getDaysInCourse()[1];
+			double tempDay3 = this->classRosterArray[j]->getDaysInCourse()[2];
+
+			double averageDays = (tempDay1 + tempDay2 + tempDay3) / 3.0;
+
+			cout << studentId << " average days = " << averageDays << "\n";
+		}
+	}
+
+	//list<int> averageDays;
 	/*int rosterSize = &classRosterArray[].size();
 
 	for (int i = 0; i < classRosterArray);*/
 
-	for (int i = 0; i < SIZE; i++)
+	/*for (int i = 0; i < SIZE; i++)
 	{
 		int day1, day2, day3, total;
 		string position = studentData[i];
@@ -185,7 +219,7 @@ void Roster::printAverageDaysInCourse(string studentId)
 		total = (day1 + day2 + day3)/3;
 
 		cout << "Student Id " << studentId << " Average Days In Course: " << total << ".\n";
-	}
+	}*/
 
 	//take the 3 day values and average them, then return them
 	//cout << "Student Id " << studentId << " Average Days In Course: " << total << ".\n";
@@ -235,6 +269,7 @@ void Roster::printByDegreeProgram(Degree degreeProgram)
 
 	for (int i = 0; i < SIZE; i++)
 	{
+		classRosterArray[SIZE];
 		string position = studentData[i];
 		char* token = NULL;
 		char* nextToken = NULL;
@@ -268,13 +303,13 @@ void Roster::printByDegreeProgram(Degree degreeProgram)
 
 void Roster::remove(string studentId)
 {
-	for (auto classRosterArray : classRosterArray)
+	/*for (auto classRosterArray : classRosterArray)
 	{
 		if (classRosterArray->getStudentId == studentId)
 		{
 			delete classRosterArray;
 		}
-	}
+	}*/
 
 	//	classRosterArray[0];
 	//	for (int i = 0; i < SIZE; i++)
@@ -310,43 +345,49 @@ void Roster::remove(string studentId)
 	//	}
 	//}
 
-	//for (int i = 0; i < SIZE; i++)
-	//{
-	//	string position = studentData[i];
-	//	char* token = NULL;
-	//	char* nextToken = NULL;
+	for (int i = 0; i < SIZE; i++)
+	{
+		string position = studentData[i];
+		char* token = NULL;
+		char* nextToken = NULL;
 
-	//	char comma[] = ",";
-	//	int value = 0;
-	//	string indexPos[9];
+		char comma[] = ",";
+		int value = 0;
+		string indexPos[9];
 
-	//	token = strtok_s(&position[0], comma, &nextToken);
-	//	while (token != NULL && value < 9)
-	//	{
-	//		indexPos[value] = token;
-	//		token = strtok_s(NULL, comma, &nextToken);
-	//		value++;
-	//	}
-	//	cout << indexPos[0] << "\n";
+		token = strtok_s(&position[0], comma, &nextToken);
+		while (token != NULL && value < 9)
+		{
+			indexPos[value] = token;
+			token = strtok_s(NULL, comma, &nextToken);
+			value++;
+		}
+		cout << indexPos[0] << "\n";
 
-	//	if (indexPos[0] == studentId)
-	//	{
-	//		position[i] = NULL;
-	//		cout << "Matched! " << indexPos[0] << "\n";
-	//	}
-	//	try
-	//	{
-	//		if (indexPos[0] == studentId)
-	//		{
-	//			position[i] = NULL;
-	//			//cout << "Matched! " << indexPos[0] << "\n";
-	//		}
-	//	}
-	//	catch (invalid_argument e)
-	//	{
-	//		cout << "Student with this Id was not found.";
-	//	}
-	//}
+		if (indexPos[0] == studentId)
+		{
+			position[i] = NULL;
+			cout << "Matched! " << indexPos[0] << "\n";
+		}
+		try
+		{
+			if (indexPos[0] == studentId)
+			{
+				position[i] = NULL;
+				//cout << "Matched! " << indexPos[0] << "\n";
+			}
+		}
+		catch (invalid_argument e)
+		{
+			cout << "Student with this Id was not found.";
+		}
+	}
+}
+
+//Create getter for classRosterArray
+Student* Roster::getClassRosterArray()
+{
+	this->classRosterArray;
 }
 
 int main()
@@ -363,10 +404,12 @@ int main()
 	classRoster.printAll();
 	classRoster.printInvalidEmails();
 	//loop through classRosterArray and for each element:
-	//classRoster.printAverageDaysInCourse("A3");
+	for (int i = 0; i < SIZE; i++) {
+		classRoster.printAverageDaysInCourse(classRoster.getClassRosterArray().getStudentId());
+	}
 	classRoster.printByDegreeProgram(SOFTWARE);
-	classRoster.remove("A3");
-	classRoster.remove("A3");
+	//classRoster.remove("A3");
+	//classRoster.remove("A3");
 	//expected: the above line should print a message saying such a student with this ID was not found.
 }
 

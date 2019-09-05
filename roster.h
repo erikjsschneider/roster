@@ -46,7 +46,7 @@ public:
 	void printAverageDaysInCourse(string);
 	void printInvalidEmails();
 	void printByDegreeProgram(Degree);
-
+	Student* getClassRosterArray();
 
 };
 #endif // ROSTER_H
