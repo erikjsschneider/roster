@@ -57,5 +57,5 @@ void SecurityStudent::print()
 			cout << "\t";
 		}
 	}
-	cout << "Degree Program: Security";
+	cout << "Degree Program: Security\n";
 }

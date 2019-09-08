@@ -57,5 +57,5 @@ void NetworkStudent::print()
 			cout << "\t";
 		}
 	}
-	cout << "Degree Program: Network";
+	cout << "Degree Program: Network\n";
 }

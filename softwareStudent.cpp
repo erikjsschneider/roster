@@ -57,5 +57,5 @@ void SoftwareStudent::print()
 			cout << "\t";
 		}
 	}
-	cout << "Degree Program: Software";
+	cout << "Degree Program: Software\n";
 }

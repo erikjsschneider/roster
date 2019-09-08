@@ -105,22 +105,24 @@ void Roster::add
 
 void Roster::printInvalidEmails()
 {
-	cout << "\nInvalid Email Addresses: ";
+	cout << "Invalid Email Addresses: ";
 
 	for (int j = 0; j < SIZE; j++)
 	{
-		string emails = this->classRosterArray[j]->getEmailAddress();
-		if (emails.find("@") == string::npos)
-		{
-			cout << emails << ", ";
-		}
-		else if (emails.find(".") == string::npos)
-		{
-			cout << emails << ", ";
-		}
-		else if (emails.find(" ") != string::npos)
-		{
-			cout << emails << ", ";
+		if (classRosterArray[j] != nullptr) {
+			string emails = this->classRosterArray[j]->getEmailAddress();
+			if (emails.find("@") == string::npos)
+			{
+				cout << emails << ", ";
+			}
+			else if (emails.find(".") == string::npos)
+			{
+				cout << emails << ", ";
+			}
+			else if (emails.find(" ") != string::npos)
+			{
+				cout << emails << ", ";
+			}
 		}
 	}
 
@@ -131,54 +133,28 @@ void Roster::printAverageDaysInCourse(string studentId)
 {
 	for (int j = 0; j < SIZE; j++)
 	{
-		if (studentId == this->classRosterArray[j]->getStudentId()) {
-			double tempDay1 = this->classRosterArray[j]->getDaysInCourse()[0];
-			double tempDay2 = this->classRosterArray[j]->getDaysInCourse()[1];
-			double tempDay3 = this->classRosterArray[j]->getDaysInCourse()[2];
+		if (classRosterArray[j] != nullptr) {
+			if (studentId == this->classRosterArray[j]->getStudentId()) {
+				double tempDay1 = this->classRosterArray[j]->getDaysInCourse()[0];
+				double tempDay2 = this->classRosterArray[j]->getDaysInCourse()[1];
+				double tempDay3 = this->classRosterArray[j]->getDaysInCourse()[2];
 
-			double averageDays = (tempDay1 + tempDay2 + tempDay3) / 3.0;
+				double averageDays = (tempDay1 + tempDay2 + tempDay3) / 3.0;
 
-			cout << studentId << " average days = " << averageDays << "\n";
+				cout << studentId << " average days = " << averageDays << "\n";
+			}
 		}
 	}
-
-	//list<int> averageDays;
-	/*int rosterSize = &classRosterArray[].size();
-	for (int i = 0; i < classRosterArray);*/
-
-	/*for (int i = 0; i < SIZE; i++)
-	{
-		int day1, day2, day3, total;
-		string position = studentData[i];
-		char* token = NULL;
-		char* nextToken = NULL;
-		char comma[] = ",";
-		int value = 0;
-		string indexPos[9];
-		token = strtok_s(&position[0], comma, &nextToken);
-		while (token != NULL && value < 9)
-		{
-			indexPos[value] = token;
-			token = strtok_s(NULL, comma, &nextToken);
-			value++;
-		}
-		day1 = stoi(indexPos[5].c_str());
-		day2 = stoi(indexPos[6].c_str());
-		day3 = stoi(indexPos[7].c_str());
-		total = (day1 + day2 + day3)/3;
-		cout << "Student Id " << studentId << " Average Days In Course: " << total << ".\n";
-	}*/
-
-	//take the 3 day values and average them, then return them
-	//cout << "Student Id " << studentId << " Average Days In Course: " << total << ".\n";
 }
 
 void Roster::printAll()
 {
 	for (int j = 0; j < SIZE; j++)
 	{
-		this->classRosterArray[j]->print();
-		cout << "\n";
+		if (classRosterArray[j] != nullptr) {
+			this->classRosterArray[j]->print();
+			cout << "\n";
+		}
 	}
 }
 
@@ -186,29 +162,31 @@ void Roster::printByDegreeProgram(Degree degreeProgram)
 {
 	for (int j = 0; j < SIZE; j++)
 	{
-		if (degreeProgram == SECURITY && classRosterArray[j]->getDegreeProgram() == SECURITY)
-		{
-			cout << "Enrolled in the Security Degree Program: " << classRosterArray[j]->getStudentId() << ", "
-				<< classRosterArray[j]->getFirstName() << ", " << classRosterArray[j]->getLastName() << ", "
-				<< classRosterArray[j]->getEmailAddress() << ", " << classRosterArray[j]->getAge() << ", "
-				<< classRosterArray[j]->getDaysInCourse()[0] << ", " << classRosterArray[j]->getDaysInCourse()[1] << ", "
-				<< classRosterArray[j]->getDaysInCourse()[2] << ", SECURITY\n";
-		}
-		else if (degreeProgram == NETWORK && classRosterArray[j]->getDegreeProgram() == NETWORK)
-		{
-			cout << "Enrolled in the Network Degree Program: " << classRosterArray[j]->getStudentId() << ", "
-				<< classRosterArray[j]->getFirstName() << ", " << classRosterArray[j]->getLastName() << ", "
-				<< classRosterArray[j]->getEmailAddress() << ", " << classRosterArray[j]->getAge() << ", "
-				<< classRosterArray[j]->getDaysInCourse()[0] << ", " << classRosterArray[j]->getDaysInCourse()[1] << ", "
-				<< classRosterArray[j]->getDaysInCourse()[2] << ", NETWORK\n";
-		}
-		else if (degreeProgram == SOFTWARE && classRosterArray[j]->getDegreeProgram() == SOFTWARE)
-		{
-			cout << "Enrolled in the Software Degree Program: " << classRosterArray[j]->getStudentId() << ", "
-				<< classRosterArray[j]->getFirstName() << ", " << classRosterArray[j]->getLastName() << ", "
-				<< classRosterArray[j]->getEmailAddress() << ", "<< classRosterArray[j]->getAge() << ", "
-				<< classRosterArray[j]->getDaysInCourse()[0] << ", " << classRosterArray[j]->getDaysInCourse()[1] << ", "
-				<< classRosterArray[j]->getDaysInCourse()[2] << ", SOFTWARE\n";
+		if (classRosterArray[j] != nullptr) {
+			if (degreeProgram == SECURITY && classRosterArray[j]->getDegreeProgram() == SECURITY)
+			{
+				cout << "Enrolled in the Security Degree Program: " << classRosterArray[j]->getStudentId() << ", "
+					<< classRosterArray[j]->getFirstName() << ", " << classRosterArray[j]->getLastName() << ", "
+					<< classRosterArray[j]->getEmailAddress() << ", " << classRosterArray[j]->getAge() << ", "
+					<< classRosterArray[j]->getDaysInCourse()[0] << ", " << classRosterArray[j]->getDaysInCourse()[1] << ", "
+					<< classRosterArray[j]->getDaysInCourse()[2] << ", SECURITY\n";
+			}
+			else if (degreeProgram == NETWORK && classRosterArray[j]->getDegreeProgram() == NETWORK)
+			{
+				cout << "Enrolled in the Network Degree Program: " << classRosterArray[j]->getStudentId() << ", "
+					<< classRosterArray[j]->getFirstName() << ", " << classRosterArray[j]->getLastName() << ", "
+					<< classRosterArray[j]->getEmailAddress() << ", " << classRosterArray[j]->getAge() << ", "
+					<< classRosterArray[j]->getDaysInCourse()[0] << ", " << classRosterArray[j]->getDaysInCourse()[1] << ", "
+					<< classRosterArray[j]->getDaysInCourse()[2] << ", NETWORK\n";
+			}
+			else if (degreeProgram == SOFTWARE && classRosterArray[j]->getDegreeProgram() == SOFTWARE)
+			{
+				cout << "Enrolled in the Software Degree Program: " << classRosterArray[j]->getStudentId() << ", "
+					<< classRosterArray[j]->getFirstName() << ", " << classRosterArray[j]->getLastName() << ", "
+					<< classRosterArray[j]->getEmailAddress() << ", " << classRosterArray[j]->getAge() << ", "
+					<< classRosterArray[j]->getDaysInCourse()[0] << ", " << classRosterArray[j]->getDaysInCourse()[1] << ", "
+					<< classRosterArray[j]->getDaysInCourse()[2] << ", SOFTWARE\n";
+			}
 		}
 	}
 }
@@ -217,108 +195,24 @@ void Roster::remove(string studentId)
 {
 	for (int j = 0; j < SIZE; j++)
 	{
-		if (studentId == this->classRosterArray[j]->getStudentId())
-		{
-			try
+		if (classRosterArray[j] != nullptr) {
+			if (studentId == this->classRosterArray[j]->getStudentId())
 			{
-				for (auto classRosterArray[j] : classRosterArray)
-				{
-					return NULL;
-				}
-				//delete this->classRosterArray[j];
-			}
-			catch (invalid_argument e)
-			{
-				cout << "Student with this Id was not found.";
+				delete this->classRosterArray[j];
+				classRosterArray[j] = nullptr;
+				return;
 			}
 		}
 	}
-	/*for (auto classRosterArray : classRosterArray)
-	{
-		if (classRosterArray->getStudentId == studentId)
-		{
-			delete classRosterArray;
-		}
-	}*/
 
-	//	classRosterArray[0];
-	//	for (int i = 0; i < SIZE; i++)
-	//	{
-	//		string position = classRosterArray[i];
-	//		char* token = NULL;
-	//		char* nextToken = NULL;
-
-	//		char comma[] = ",";
-	//		int value = 0;
-	//		string indexPos[9];
-
-	//		token = strtok_s(&position[], comma, &nextToken);
-	//		while (token != NULL && value < 9)
-	//		{
-	//			indexPos[value] = token;
-	//			token = strtok_s(NULL, comma, &nextToken);
-	//			value++;
-	//		}
-
-	//		try
-	//		{
-	//			if (indexPos[0] == studentId)
-	//			{
-	//				delete &classRosterArray[i];
-	//				//cout << "Matched! " << indexPos[0] << "\n";
-	//			}
-	//		}
-	//		catch (invalid_argument e)
-	//		{
-	//			cout << "Student with this Id was not found.";
-	//		}
-	//	}
-	//}
-
-	//for (int i = 0; i < SIZE; i++)
-	//{
-	//	string position = studentData[i];
-	//	char* token = NULL;
-	//	char* nextToken = NULL;
-
-	//	char comma[] = ",";
-	//	int value = 0;
-	//	string indexPos[9];
-
-	//	token = strtok_s(&position[0], comma, &nextToken);
-	//	while (token != NULL && value < 9)
-	//	{
-	//		indexPos[value] = token;
-	//		token = strtok_s(NULL, comma, &nextToken);
-	//		value++;
-	//	}
-	//	cout << indexPos[0] << "\n";
-
-	//	if (indexPos[0] == studentId)
-	//	{
-	//		position[i] = NULL;
-	//		cout << "Matched! " << indexPos[0] << "\n";
-	//	}
-	//	try
-	//	{
-	//		if (indexPos[0] == studentId)
-	//		{
-	//			position[i] = NULL;
-	//			//cout << "Matched! " << indexPos[0] << "\n";
-	//		}
-	//	}
-	//	catch (invalid_argument e)
-	//	{
-	//		cout << "Student with this Id was not found.";
-	//	}
-	//}
+	cout << studentId << " was not found.";
 }
 
 //Create getter for classRosterArray
-//Student* Roster::getClassRosterArray()
-//{
-//	return this->classRosterArray;
-//}
+Student** Roster::getClassRosterArray()
+{
+	return this->classRosterArray;
+}
 
 int main()
 {
@@ -334,16 +228,25 @@ int main()
 	classRoster.printAll();
 	classRoster.printInvalidEmails();
 	//loop through classRosterArray and for each element:
-	/*for (int i = 0; i < SIZE; i++) {
-		classRoster.printAverageDaysInCourse(classRoster.getClassRosterArray().getStudentId());
-	}*/
+	for (int i = 0; i < SIZE; i++) {
+		classRoster.printAverageDaysInCourse(classRoster.getClassRosterArray()[i]->getStudentId());
+	}
 	classRoster.printByDegreeProgram(SOFTWARE);
 	classRoster.remove("A3");
 	classRoster.remove("A3");
 	//expected: the above line should print a message saying such a student with this ID was not found.
 }
 
-Roster::~Roster() {}
+Roster::~Roster() {
+	for (int j = 0; j = SIZE; j++)
+	{
+		if (classRosterArray[j] != nullptr)
+		{
+			delete this->classRosterArray[j];
+			classRosterArray[j] = nullptr;
+		}
+	}
+}
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
